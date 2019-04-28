@@ -1,0 +1,78 @@
+using System;
+
+namespace CreateClass
+{
+    class Person
+    {
+        private string Name;
+        private int BirthDate;
+        private Genders Gender;
+
+        public Person(string name, int birthdate, Genders gender) {
+            this.Name = name;
+            this.BirthDate = birthdate;
+            this.Gender = gender;
+        }
+
+        public override string ToString()
+        {
+            return "Name: " + Name + "\n" + "Birthdate: " + BirthDate + "\n" + "Gender: " + Gender;
+        }
+    }
+
+    class Employee : Person, ICloneable
+    {
+        private int Salary;
+        private string Profession;
+        internal Room Room;
+
+        public Employee(string name, int birthdate, Genders gender, int salary, string profession) : base(name, birthdate, gender)
+        {
+            this.Salary = salary;
+            this.Profession = profession;
+        }
+
+        public object Clone()
+        {
+            Employee newEmployee = (Employee)this.MemberwiseClone();
+            newEmployee.Room = new Room(Room.Number);
+            return newEmployee;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + "\n" + "Salary: " + Salary + "\n" + "Profession: " + Profession;
+        }
+    }
+
+    class Room
+    {
+        internal int Number;
+
+        public Room(int roomNumber)
+        {
+            this.Number = roomNumber;
+        }
+
+
+    }
+
+    class Program
+    {
+        static void Main(string[] args) {
+            Employee Kovacs = new Employee("Máté Bálint", 1998, Genders.Male, 1000, "Software Developer");
+            Kovacs.Room = new Room(111);
+            Employee Kovacs2 = (Employee)Kovacs.Clone();
+            Kovacs2.Room.Number = 112;
+            Console.WriteLine(Kovacs.ToString());
+            Console.WriteLine(Kovacs2.ToString());
+            Console.ReadKey();
+        }
+    }
+}
+
+enum Genders
+{
+    Male,
+    Female
+}
