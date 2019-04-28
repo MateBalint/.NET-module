@@ -1,0 +1,13 @@
+<Window x:Class="TimerEvents.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimerEvents"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ProgressBar HorizontalAlignment="Left" Height="130" Margin="93,128,0,0" VerticalAlignment="Top" Width="639" Name="myProgressBar" Loaded="MyProgressBar_Loaded"/>
+
+    </Grid>
+</Window>
