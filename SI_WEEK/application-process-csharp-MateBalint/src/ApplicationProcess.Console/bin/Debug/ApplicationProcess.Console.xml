@@ -1,0 +1,376 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApplicationProcess.Console</name>
+    </assembly>
+    <members>
+        <member name="T:ApplicationProcess.Console.Data.InMemoryRepository">
+            <summary>
+            Memory storage for application process.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Data.InMemoryRepository.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ApplicationProcess.Console.Data.InMemoryRepository"/> class.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Data.InMemoryRepository.AmountOfApplicationAfter(System.DateTime)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ApplicationProcess.Console.Data.InMemoryRepository.GetAllMentorFrom(ApplicationProcess.Console.Entities.City)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ApplicationProcess.Console.Data.InMemoryRepository.GetAllMentorWhomFavoriteLanguage(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ApplicationProcess.Console.Data.InMemoryRepository.GetApplicantsOf(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ApplicationProcess.Console.Data.InMemoryRepository.GetAppliedStudentEmailList">
+            <inheritdoc/>
+        </member>
+        <member name="M:ApplicationProcess.Console.Data.InMemoryRepository.Seed">
+            <summary>
+            Seed memory storage with sample data.
+            </summary>
+        </member>
+        <member name="T:ApplicationProcess.Console.Data.IApplicationRepository">
+            <summary>
+            Interface for application process repository.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Data.IApplicationRepository.GetAllMentorFrom(ApplicationProcess.Console.Entities.City)">
+            <summary>
+            Gets all stored <see cref="T:ApplicationProcess.Console.Entities.Mentor"/>.
+            </summary>
+            <param name="city">The location we are interested in.</param>
+            <returns>All stored mentors as an <see cref="T:System.Collections.Generic.IEnumerable`1"/> collection</returns>
+        </member>
+        <member name="M:ApplicationProcess.Console.Data.IApplicationRepository.GetAllMentorWhomFavoriteLanguage(System.String)">
+            <summary>
+            Gets all mentors whom favourite langugage is equal to the given language.
+            </summary>
+            <param name="language">Programming language</param>
+            <returns><see cref="T:System.Collections.Generic.IEnumerable`1"/> collection of mentors.</returns>
+        </member>
+        <member name="M:ApplicationProcess.Console.Data.IApplicationRepository.GetApplicantsOf(System.String)">
+            <summary>
+            Gets all <see cref="T:ApplicationProcess.Console.Entities.Applicant"/> who applied and her contact mentor is equal to the given one.
+            If the given <paramref name="contactMentorName"/> is less then 3 character then it throws <see cref="T:System.ArgumentException"/>.
+            </summary>
+            <param name="contactMentorName">The name of the <see cref="T:ApplicationProcess.Console.Entities.Mentor"/> who is the contact person.</param>
+            <returns><see cref="T:System.Collections.Generic.IEnumerable`1"/> collection of applicants.</returns>
+        </member>
+        <member name="M:ApplicationProcess.Console.Data.IApplicationRepository.AmountOfApplicationAfter(System.DateTime)">
+            <summary>
+            Calculate how many applications were registered after <paramref name="date"/>
+            </summary>
+            <param name="date">The date we would like to get applications after.</param>
+            <returns>Total number of applications.</returns>
+        </member>
+        <member name="M:ApplicationProcess.Console.Data.IApplicationRepository.GetAppliedStudentEmailList">
+            <summary>
+            Gets all email address of <see cref="T:ApplicationProcess.Console.Entities.Applicant"/>'s whom <see cref="T:ApplicationProcess.Console.ApplicationStatus"/> is <see cref="F:ApplicationProcess.Console.ApplicationStatus.Applied"/>.
+            </summary>
+            <returns><see cref="T:System.Collections.Generic.IEnumerable`1"/> collection of email addresses.</returns>
+        </member>
+        <member name="T:ApplicationProcess.Console.Entities.Applicant">
+            <summary>
+            A person who applies to Codecool
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.Applicant.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ApplicationProcess.Console.Entities.Applicant"/> class.
+            It is necessary because of serialization.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.Applicant.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ApplicationProcess.Console.Entities.Applicant"/> class.
+            </summary>
+            <param name="firstName">Firstname of applicant</param>
+            <param name="lastName">Last name of applicant</param>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.Applicant.ApplicationCode">
+            <summary>
+            Gets or sets the application code which is generated from the FirstName, LastName and Id.
+            </summary>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.Applicant.Status">
+            <summary>
+            Gets or sets the current status of the application.
+            </summary>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.Applicant.StartDate">
+            <summary>
+            Gets or sets the StartDate of the applicant as a Codecooler.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.Applicant.Serialize">
+            <summary>
+            Serialize the object to XML file with the "applicant" prefix and the <see cref="T:ApplicationProcess.Console.Entities.Applicant"/>'s Firstname and Lastname.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.Applicant.ToString">
+            <summary>
+            String representation of an applicant.
+            </summary>
+            <returns>Applicant's base data as a string.</returns>
+        </member>
+        <member name="T:ApplicationProcess.Console.Entities.Application">
+            <summary>
+            Application of applicants
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.Application.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ApplicationProcess.Console.Entities.Application"/> class.
+            It is necessary because of serialization.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.Application.#ctor(ApplicationProcess.Console.Entities.Mentor,ApplicationProcess.Console.Entities.Applicant,System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ApplicationProcess.Console.Entities.Application"/> class.
+            </summary>
+            <param name="mentor"><see cref="P:ApplicationProcess.Console.Entities.Application.Mentor"/> who is the contact person.</param>
+            <param name="applicant"><see cref="P:ApplicationProcess.Console.Entities.Application.Applicant"/> who applies to Codecool.</param>
+            <param name="applicationDate">Date of the application process started.</param>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.Application.Mentor">
+            <summary>
+            Gets or sets contact <see cref="P:ApplicationProcess.Console.Entities.Application.Mentor"/> of the application.
+            </summary>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.Application.Applicant">
+            <summary>
+            Gets or sets <see cref="P:ApplicationProcess.Console.Entities.Application.Applicant"/> who applied.
+            </summary>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.Application.ApplicationDate">
+            <summary>
+            Gets or sets the date of the <see cref="T:ApplicationProcess.Console.Entities.Application"/>.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.Application.Serialize">
+            <summary>
+            Serialize the object to XML file with the "app" prefix and the <see cref="T:ApplicationProcess.Console.Entities.Application"/>'s Date.
+            </summary>
+        </member>
+        <member name="T:ApplicationProcess.Console.Entities.City">
+            <summary>
+            Currently available Codecool locations
+            </summary>
+        </member>
+        <member name="F:ApplicationProcess.Console.Entities.City.Miskolc">
+            <summary>
+            First Hungarian location.
+            </summary>
+        </member>
+        <member name="F:ApplicationProcess.Console.Entities.City.Budapest">
+            <summary>
+            Second Hungarian location.
+            </summary>
+        </member>
+        <member name="F:ApplicationProcess.Console.Entities.City.Krakow">
+            <summary>
+            First Polish location.
+            </summary>
+        </member>
+        <member name="F:ApplicationProcess.Console.Entities.City.Warsaw">
+            <summary>
+            Second Polish location.
+            </summary>
+        </member>
+        <member name="F:ApplicationProcess.Console.Entities.City.Bucharest">
+            <summary>
+            First Romanian location.
+            </summary>
+        </member>
+        <member name="T:ApplicationProcess.Console.Entities.Mentor">
+            <summary>
+            A mentor is a person in Codecool who is responsible for managing and supporting applied students.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.Mentor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ApplicationProcess.Console.Entities.Mentor"/> class.
+            It is necessary because of serialization.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.Mentor.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ApplicationProcess.Console.Entities.Mentor"/> class.
+            </summary>
+            <param name="firstName">Firstname of a mentor.</param>
+            <param name="lastName">Lastname of a mentor.</param>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.Mentor.Nickname">
+            <summary>
+            Gets or sets the nickname of the mentor.
+            </summary>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.Mentor.City">
+            <summary>
+            Gets or sets the location of the mentor.
+            </summary>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.Mentor.ProgrammingLanguage">
+            <summary>
+            Gets or sets the favourite programing language of a mentor.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.Mentor.Serialize">
+            <summary>
+            Serialize the object to XML file with the "mentor" prefix and the <see cref="T:ApplicationProcess.Console.Entities.Mentor"/>'s Nickname.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.Mentor.ToString">
+            <summary>
+            String representation of a <see cref="T:ApplicationProcess.Console.Entities.Mentor"/>
+            </summary>
+            <returns>Mentor's base data as a string.</returns>
+            <example>Example: [Mentor - Atesz] [1] My name is: Attila Molnár</example>
+        </member>
+        <member name="T:ApplicationProcess.Console.Entities.Person">
+            <summary>
+            Person class.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.Person.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ApplicationProcess.Console.Entities.Person"/> class.
+            It is necessary because of serialization.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.Person.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ApplicationProcess.Console.Entities.Person"/> class.
+            </summary>
+            <param name="firstName">Firstname of person.</param>
+            <param name="lastName">Secondname of person.</param>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.Person.Id">
+            <summary>
+            Gets or sets the unique identifier of the person.
+            </summary>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.Person.FirstName">
+            <summary>
+            Gets or sets the firstname of the person.
+            </summary>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.Person.LastName">
+            <summary>
+            Gets or sets the lastname of the person.
+            </summary>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.Person.PhoneNumber">
+            <summary>
+            Gets or sets the phone number of the person.
+            </summary>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.Person.Email">
+            <summary>
+            Gets or sets the email of the person.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.Person.ToString">
+            <summary>
+            String representation of a <see cref="T:ApplicationProcess.Console.Entities.Person"/>
+            </summary>
+            <returns>Person's base data as a string.</returns>
+        </member>
+        <member name="T:ApplicationProcess.Console.Entities.School">
+            <summary>
+            Codecool location.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.School.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ApplicationProcess.Console.Entities.School"/> class.
+            It is necessary because of serialization.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.School.#ctor(System.String,ApplicationProcess.Console.Entities.City,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ApplicationProcess.Console.Entities.School"/> class.
+            </summary>
+            <param name="name">Name of the new <see cref="T:ApplicationProcess.Console.Entities.School"/> instance.</param>
+            <param name="city">City where the <see cref="T:ApplicationProcess.Console.Entities.School"/> is located.</param>
+            <param name="country">Country where the <see cref="T:ApplicationProcess.Console.Entities.School"/> is located.</param>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.School.Id">
+            <summary>
+            Gets or sets the unique identifier of a <see cref="T:ApplicationProcess.Console.Entities.School"/>.
+            </summary>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.School.Name">
+            <summary>
+            Gets or sets thr name of the <see cref="T:ApplicationProcess.Console.Entities.School"/>.
+            </summary>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.School.City">
+            <summary>
+            Gets or sets the city where the <see cref="T:ApplicationProcess.Console.Entities.School"/> is located.
+            </summary>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.School.Country">
+            <summary>
+            Gets or sets the country of the <see cref="T:ApplicationProcess.Console.Entities.School"/>
+            </summary>
+        </member>
+        <member name="P:ApplicationProcess.Console.Entities.School.ContactPerson">
+            <summary>
+            Gets or sets the main contact <see cref="T:ApplicationProcess.Console.Entities.Mentor"/> of the location.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Entities.School.Serialize">
+            <summary>
+            Serialize the object to XML file with "_school" prefix and the <see cref="T:ApplicationProcess.Console.Entities.School"/>'s name.
+            </summary>
+        </member>
+        <member name="T:ApplicationProcess.Console.ApplicationStatus">
+            <summary>
+            Possible application statuses.
+            </summary>
+        </member>
+        <member name="F:ApplicationProcess.Console.ApplicationStatus.Applied">
+            <summary>
+            When the applicant starts the process.
+            </summary>
+        </member>
+        <member name="F:ApplicationProcess.Console.ApplicationStatus.Cancelled">
+            <summary>
+            In some reason the process is terminated.
+            </summary>
+        </member>
+        <member name="F:ApplicationProcess.Console.ApplicationStatus.Approved">
+            <summary>
+            When the applicant accepted as a new student.
+            </summary>
+        </member>
+        <member name="F:ApplicationProcess.Console.ApplicationStatus.Recejted">
+            <summary>
+            When the applicant failed during the application process.
+            </summary>
+        </member>
+        <member name="T:ApplicationProcess.Console.Program">
+            <summary>
+            Main application process program.
+            </summary>
+        </member>
+        <member name="M:ApplicationProcess.Console.Program.Main(System.String[])">
+            <summary>
+            The main entry point of ApplicationProcess.
+            </summary>
+            <param name="args">Command line arguments.</param>
+        </member>
+        <member name="M:ApplicationProcess.Console.Program.GetAllMentorFromACity">
+            <summary>
+            This method is asking for a City via console and based on that
+            prints all the <see cref="T:ApplicationProcess.Console.Entities.Mentor"/>s who is working at that location
+            </summary>
+        </member>
+    </members>
+</doc>
