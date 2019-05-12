@@ -1,0 +1,7 @@
+C:\Users\Máté Bálint\Desktop\C#\SI WEEK\2nd SI\searching-for-a-file-MateBalint\SeekAndArchive\SeekAndArchive\bin\Debug\SeekAndArchive.exe.config
+C:\Users\Máté Bálint\Desktop\C#\SI WEEK\2nd SI\searching-for-a-file-MateBalint\SeekAndArchive\SeekAndArchive\bin\Debug\SeekAndArchive.exe
+C:\Users\Máté Bálint\Desktop\C#\SI WEEK\2nd SI\searching-for-a-file-MateBalint\SeekAndArchive\SeekAndArchive\bin\Debug\SeekAndArchive.pdb
+C:\Users\Máté Bálint\Desktop\C#\SI WEEK\2nd SI\searching-for-a-file-MateBalint\SeekAndArchive\SeekAndArchive\obj\Debug\SeekAndArchive.csprojAssemblyReference.cache
+C:\Users\Máté Bálint\Desktop\C#\SI WEEK\2nd SI\searching-for-a-file-MateBalint\SeekAndArchive\SeekAndArchive\obj\Debug\SeekAndArchive.csproj.CoreCompileInputs.cache
+C:\Users\Máté Bálint\Desktop\C#\SI WEEK\2nd SI\searching-for-a-file-MateBalint\SeekAndArchive\SeekAndArchive\obj\Debug\SeekAndArchive.exe
+C:\Users\Máté Bálint\Desktop\C#\SI WEEK\2nd SI\searching-for-a-file-MateBalint\SeekAndArchive\SeekAndArchive\obj\Debug\SeekAndArchive.pdb
